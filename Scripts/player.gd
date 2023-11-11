@@ -1,5 +1,8 @@
 extends Node2D
 
+
+@onready var sprite = $Sprite2D
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -10,22 +13,28 @@ var speed = 400
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var input_vector = Vector2.ZERO
+	var velocity = Vector2.ZERO
+	
 
 	if Input.is_action_pressed("RightMovement"):
-		input_vector.x += 1
+		velocity.x += 1
 	if Input.is_action_pressed("LeftMovement"):
-		input_vector.x -= 1
+		velocity.x -= 1
 	if Input.is_action_pressed("DownMovement"):
-		input_vector.y += 1
+		velocity.y += 1
 	if Input.is_action_pressed("UpMovement"):
-		input_vector.y -= 1
+		velocity.y -= 1
+		
+	if velocity.x > 0:
+		sprite.flip_h = true
+	elif velocity.x < 0:
+		sprite.flip_h = false
 	# Normalize the input vector to ensure consistent movement speed in all directions
-	input_vector = input_vector.normalized()
+	velocity = velocity.normalized()
 
 	# Move the Node2D based on input and speed
 	# verify why it breaks when not multiplying by delta
-	position += input_vector * speed * delta
+	position += velocity * speed * delta
 	
 	
 	
