@@ -1,0 +1,15 @@
+[gd_scene load_steps=5 format=3 uid="uid://d3ma4l78ul7t1"]
+
+[ext_resource type="PackedScene" uid="uid://hxfqpwkjx5hi" path="res://Scenes/player.tscn" id="1_jpl62"]
+[ext_resource type="PackedScene" uid="uid://cbq8grdrmull0" path="res://Scenes/enemy.tscn" id="2_ayl7j"]
+[ext_resource type="PackedScene" uid="uid://dlxgomtw3b0i8" path="res://Scenes/Pokeball.tscn" id="3_fsx0m"]
+[ext_resource type="Script" path="res://Scripts/Pokeball.gd" id="4_j1he1"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_jpl62")]
+
+[node name="enemy" parent="." instance=ExtResource("2_ayl7j")]
+
+[node name="Pokeball" parent="." instance=ExtResource("3_fsx0m")]
+script = ExtResource("4_j1he1")
