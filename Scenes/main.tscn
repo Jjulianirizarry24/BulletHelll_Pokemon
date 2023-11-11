@@ -10,6 +10,7 @@
 [node name="Player" parent="." instance=ExtResource("1_jpl62")]
 
 [node name="enemy" parent="." instance=ExtResource("2_ayl7j")]
+position = Vector2(467, 250)
 
 [node name="Pokeball" parent="." instance=ExtResource("3_fsx0m")]
 scale = Vector2(0.002, 0.002)
