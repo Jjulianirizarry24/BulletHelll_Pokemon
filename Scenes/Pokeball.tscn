@@ -1,9 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://dlxgomtw3b0i8"]
+[gd_scene load_steps=3 format=3 uid="uid://dlxgomtw3b0i8"]
 
 [ext_resource type="Texture2D" uid="uid://bi4lvwsc83ovf" path="res://image_2023-11-10_191254144-removebg-preview.png" id="1_qtagg"]
 
-[node name="Pokeball" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_eosdh"]
+radius = 6.08276
+
+[node name="Pokeball" type="Area2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.11, 0.11)
 texture = ExtResource("1_qtagg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_eosdh")
