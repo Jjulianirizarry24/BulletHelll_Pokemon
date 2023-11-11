@@ -1,7 +1,7 @@
-extends Node2D
+extends CharacterBody2D
 
 
-@onready var sprite = $Sprite2D
+#@onready var sprite = $Sprite2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -12,29 +12,27 @@ var speed = 400
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	var velocity = Vector2.ZERO
+func _physics_process(delta):
 	
 
-	if Input.is_action_pressed("RightMovement"):
-		velocity.x += 1
-	if Input.is_action_pressed("LeftMovement"):
-		velocity.x -= 1
-	if Input.is_action_pressed("DownMovement"):
-		velocity.y += 1
-	if Input.is_action_pressed("UpMovement"):
-		velocity.y -= 1
+	var direction = Input.get_vector("LeftMovement", "RightMovement", "UpMovement", "DownMovement")
+	
+	velocity.x = speed * direction.x
+	velocity.y = speed * direction.y
 		
-	if velocity.x > 0:
-		sprite.flip_h = true
-	elif velocity.x < 0:
-		sprite.flip_h = false
-	# Normalize the input vector to ensure consistent movement speed in all directions
-	velocity = velocity.normalized()
-
-	# Move the Node2D based on input and speed
-	# verify why it breaks when not multiplying by delta
-	position += velocity * speed * delta
+		
+	if velocity.x != 0:
+		$AnimatedSprite2D.animation = "right"
+		$AnimatedSprite2D.flip_v = false
+		# See the note below about boolean assignment.
+		$AnimatedSprite2D.flip_h = velocity.x < 0
+	elif velocity.y < 0:
+		$AnimatedSprite2D.animation = "up"
+	elif velocity.y > 0:
+		$AnimatedSprite2D.animation = "down"
+		
+	
+	move_and_slide()
 	
 	
 	
