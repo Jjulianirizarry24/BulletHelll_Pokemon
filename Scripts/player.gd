@@ -12,13 +12,13 @@ var speed = 400
 func _process(delta):
 	var input_vector = Vector2.ZERO
 
-	if Input.is_action_pressed("ui_right"):
+	if Input.is_action_pressed("RightMovement"):
 		input_vector.x += 1
-	if Input.is_action_pressed("ui_left"):
+	if Input.is_action_pressed("LeftMovement"):
 		input_vector.x -= 1
-	if Input.is_action_pressed("ui_down"):
+	if Input.is_action_pressed("DownMovement"):
 		input_vector.y += 1
-	if Input.is_action_pressed("ui_up"):
+	if Input.is_action_pressed("UpMovement"):
 		input_vector.y -= 1
 	# Normalize the input vector to ensure consistent movement speed in all directions
 	input_vector = input_vector.normalized()
