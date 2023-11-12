@@ -6,13 +6,19 @@ extends CharacterBody2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
+	self.position = Vector2(50,50)
+	
 
 # Default speed for Character
 var speed = 500
 
+func _process(delta):
+	if Global.isHit:
+		pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
+
 	
 
 	var direction = Input.get_vector("LeftMovement", "RightMovement", "UpMovement", "DownMovement")
@@ -35,18 +41,5 @@ func _physics_process(delta):
 	move_and_slide()
 	
 	
-	
 
 
-
-
-# Some stuff i read from their documentation
-#@export var speed = 400
-
-#func get_input():
-#	var input_direction = Input.get_vector("left", "right", "up", "down")
-#	velocity = input_direction * speed
-
-#func _physics_process(delta):
-#	get_input()
-#	move_and_slide()

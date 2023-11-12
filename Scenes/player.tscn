@@ -1,11 +1,11 @@
-[gd_scene load_steps=18 format=3 uid="uid://hxfqpwkjx5hi"]
+[gd_scene load_steps=19 format=3 uid="uid://hxfqpwkjx5hi"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_7dt7e"]
 [ext_resource type="Texture2D" uid="uid://bepn3siiee0bd" path="res://pikachubase.png" id="2_l0w17"]
 [ext_resource type="Texture2D" uid="uid://dql1eid7cl0k2" path="res://pikachu_sprite_by_aniki0001.png" id="2_xefup"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1xqri"]
-size = Vector2(14.2748, 20.9624)
+size = Vector2(13.3232, 27.9498)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6pkih"]
 atlas = ExtResource("2_xefup")
@@ -109,12 +109,18 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Player" type="CharacterBody2D"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eosfr"]
+radius = 7.0
+height = 19.0
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+position = Vector2(300, 300)
 scale = Vector2(2, 2)
 script = ExtResource("1_7dt7e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 0.25)
+visible = false
+position = Vector2(-0.5, 6)
 scale = Vector2(1.0508, 0.644012)
 shape = SubResource("RectangleShape2D_1xqri")
 
@@ -128,3 +134,12 @@ autoplay = "right"
 visible = false
 scale = Vector2(0.0134635, 0.0110703)
 texture = ExtResource("2_l0w17")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="playerHitbox" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 6)
+shape = SubResource("CapsuleShape2D_eosfr")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_player_body_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bc6oeea28c4t3"
+path="res://.godot/imported/Pokémon Red, Blue & Yellow - Trainer Battle Music (HQ).mp3-90b2cb4ecf3e0f517a1722f00ed5d6d5.mp3str"
+
+[deps]
+
+source_file="res://Pokémon Red, Blue & Yellow - Trainer Battle Music (HQ).mp3"
+dest_files=["res://.godot/imported/Pokémon Red, Blue & Yellow - Trainer Battle Music (HQ).mp3-90b2cb4ecf3e0f517a1722f00ed5d6d5.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

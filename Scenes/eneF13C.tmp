@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbq8grdrmull0"]
+
+[ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_tnnv8"]
+[ext_resource type="Texture2D" uid="uid://b3jl1hqmq053u" path="res://red_enemy.png" id="1_twjrv"]
+
+[node name="enemy" type="Node2D"]
+script = ExtResource("1_tnnv8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.0616733, 0.0555477)
+texture = ExtResource("1_twjrv")
+metadata/_edit_group_ = true
+
+[node name="TimeToShoot" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="rotator" type="Node2D" parent="."]
+
+[node name="TimePatternChange" type="Timer" parent="."]
+wait_time = 5.0
+
+[connection signal="timeout" from="TimeToShoot" to="." method="_on_TimeToShoot_timeout"]
+[connection signal="timeout" from="TimePatternChange" to="." method="_on_TimePatternChange_timeout"]

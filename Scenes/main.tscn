@@ -1,15 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://d3ma4l78ul7t1"]
+[gd_scene load_steps=6 format=3 uid="uid://d3ma4l78ul7t1"]
 
 [ext_resource type="PackedScene" uid="uid://hxfqpwkjx5hi" path="res://Scenes/player.tscn" id="1_jpl62"]
+[ext_resource type="Script" path="res://Scripts/main.gd" id="1_w71xi"]
 [ext_resource type="PackedScene" uid="uid://cbq8grdrmull0" path="res://Scenes/enemy.tscn" id="2_ayl7j"]
 [ext_resource type="PackedScene" uid="uid://dlxgomtw3b0i8" path="res://Scenes/Pokeball.tscn" id="3_fsx0m"]
+[ext_resource type="AudioStream" uid="uid://bc6oeea28c4t3" path="res://Pokémon Red, Blue & Yellow - Trainer Battle Music (HQ).mp3" id="5_nc3f3"]
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_w71xi")
 
 [node name="Player" parent="." instance=ExtResource("1_jpl62")]
 
 [node name="enemy" parent="." instance=ExtResource("2_ayl7j")]
-position = Vector2(467, 250)
 
 [node name="Pokeball" parent="." instance=ExtResource("3_fsx0m")]
 scale = Vector2(0.002, 0.002)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_nc3f3")
+volume_db = -21.293

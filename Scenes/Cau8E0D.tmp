@@ -1,0 +1,85 @@
+[gd_scene load_steps=9 format=3 uid="uid://jtkvipkb33k2"]
+
+[ext_resource type="Script" path="res://Scripts/Score.gd" id="1_3jaa6"]
+[ext_resource type="Texture2D" uid="uid://dryiq5g54ex83" path="res://shakeLeftPokeball.png" id="1_fl805"]
+[ext_resource type="Texture2D" uid="uid://bi4lvwsc83ovf" path="res://image_2023-11-10_191254144-removebg-preview.png" id="2_f3mn1"]
+[ext_resource type="Texture2D" uid="uid://dkedorsgr7f4b" path="res://ShakeRightPokeball.png" id="3_lnbtc"]
+[ext_resource type="FontFile" uid="uid://comd0a6f36umo" path="res://PKMN RBYGSC.ttf" id="5_tfuqg"]
+[ext_resource type="Script" path="res://Scripts/Click.gd" id="6_24ibv"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b5pnx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_f3mn1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_fl805")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_f3mn1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_lnbtc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_f3mn1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iwxp6"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+
+[node name="Caught" type="Node2D"]
+script = ExtResource("1_3jaa6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_b5pnx")
+frame_progress = 0.406233
+speed_scale = 0.9
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -178.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.850295, 0.550825)
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = -67
+theme_override_constants/margin_right = -16
+theme_override_constants/margin_bottom = -16
+
+[node name="Panel" type="Panel" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_iwxp6")
+
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/Panel"]
+offset_right = 120.0
+offset_bottom = 21.0
+theme_override_fonts/font = ExtResource("5_tfuqg")
+text = "Counter:
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+script = ExtResource("6_24ibv")

@@ -14,8 +14,27 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 
-	position += transform.x * speed * delta
 	
+	
+	if Global.isHit == true:
+		print("IM HIT!")
+		Global.isHit = false
+		
+		
+		get_tree().change_scene_to_file("res://Scenes/Caught.tscn")
+		#swapState()
+		
+		
+	
+	else:
+		position += transform.x * speed * delta
+	
+	
+#func swapState():
+	# Load the scene
+	#var scene_b = load("res://Scenes/Caught.tscn")
+	#get_tree().change_scene("res://Scenes/Caught.tscn")
+	#Global.goto_scene("res://Scenes/Caught.tscn")
 
 
 	#position += direction * speed * delta
@@ -33,5 +52,15 @@ func _process(delta):
 		#body.take_damage(1)
 		#queue_free()
 
+		
 func _on_screen_exited():
 	queue_free()
+
+#Unsure if i wanna use this yet
+func _on_hbox_body_entered(body):
+	if body.is_in_group("player"):
+		Global.isHit = true
+	#body.game_over()
+
+
+	
