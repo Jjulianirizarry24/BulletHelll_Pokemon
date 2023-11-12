@@ -40,6 +40,10 @@ func _physics_process(delta):
 	
 	move_and_slide()
 	
+#	for instance in get_slide_collision_count():
+#		var c = get_slide_collision(instance)
+#		c.get("number") == 1
+	
 	
 
 

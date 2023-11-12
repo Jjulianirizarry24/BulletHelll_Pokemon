@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://d3ma4l78ul7t1"]
+[gd_scene load_steps=8 format=3 uid="uid://d3ma4l78ul7t1"]
 
 [ext_resource type="PackedScene" uid="uid://hxfqpwkjx5hi" path="res://Scenes/player.tscn" id="1_jpl62"]
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_w71xi"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dlxgomtw3b0i8" path="res://Scenes/Pokeball.tscn" id="3_fsx0m"]
 [ext_resource type="AudioStream" uid="uid://bc6oeea28c4t3" path="res://Pokémon Red, Blue & Yellow - Trainer Battle Music (HQ).mp3" id="5_nc3f3"]
 [ext_resource type="Texture2D" uid="uid://hliovf8f2xdi" path="res://background.png" id="6_ul62l"]
+[ext_resource type="PackedScene" uid="uid://b7xikdrwwlp4s" path="res://wall.tscn" id="9_8g5ap"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_w71xi")
@@ -27,3 +28,21 @@ scale = Vector2(0.002, 0.002)
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_nc3f3")
 volume_db = -21.293
+
+[node name="WALL" parent="." instance=ExtResource("9_8g5ap")]
+position = Vector2(-63, 397)
+scale = Vector2(1, 20)
+
+[node name="WALL2" parent="." instance=ExtResource("9_8g5ap")]
+position = Vector2(1600, 501)
+scale = Vector2(1, 20)
+
+[node name="WALL3" parent="." instance=ExtResource("9_8g5ap")]
+position = Vector2(763, -66)
+scale = Vector2(20, 1)
+number = 1
+
+[node name="WALL4" parent="." instance=ExtResource("9_8g5ap")]
+position = Vector2(755, 891)
+scale = Vector2(20, 1)
+number = 1

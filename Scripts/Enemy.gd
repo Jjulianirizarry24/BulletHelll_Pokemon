@@ -1,4 +1,4 @@
-extends Node2D
+extends CharacterBody2D
 
 #var where we store
 @export var pokeball_scene = load("res://Scenes/Pokeball.tscn")
@@ -11,8 +11,15 @@ extends Node2D
 #@onready var pathfollow = get_parent()
 #@export var path : String = "linear"
 
+var speed = 0.5
+var vel = Vector2(randf(), randf()).normalized() * speed
+
+
+#velocity.x = speed * direction.x
+#velocity.y = speed * direction.y
+
 var rotate_speed = 100
-var shoot_timer_wait = 0.2
+var shoot_timer_wait = 0.1
 var spawnpoint_count = 2
 var radius = 30
 var step = 0
@@ -59,6 +66,19 @@ func _process(delta):
 	var new_rotate = rotate.rotation_degrees + rotate_speed * delta
 	rotate.rotation_degrees = fmod(new_rotate, 360)
 	
+	var random_direction = Vector2(randf_range(0, 360), randf_range(0, 360)).normalized()
+	vel = random_direction * speed
+
+
+	for instance in get_slide_collision_count():
+		var c = get_slide_collision(instance)
+		if c.get("number") == 0:
+			vel.x = -vel.x
+		elif c.get("number") == 1:
+			vel.y = -vel.y
+
+	move_and_collide(vel)
+			
 	#Set random path or something
 	
 	#if self.position.x != 200 and self.position.x  != 1400:
@@ -142,6 +162,8 @@ func _on_TimePatternChange_timeout():
 		patternGen(70,1,10)
 	elif randomPattern == 5:
 		patternGen(40,1,15)
+
+
 
 	
 	
