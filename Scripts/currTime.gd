@@ -1,0 +1,18 @@
+extends Label
+
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	
+	
+	self.text = "Time Remaining:" + str(Global.curTime)
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	
+	self.text = "Time Remaining:" + str(Global.curTime)
+
+
+

@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://d4d2ewdm6kgk6"]
+[gd_scene load_steps=2 format=3 uid="uid://d4d2ewdm6kgk6"]
+
+[ext_resource type="Script" path="res://Scripts/EndScore.gd" id="1_etnk1"]
 
 [node name="GameOver" type="Node2D"]
 
@@ -6,3 +8,10 @@
 offset_right = 40.0
 offset_bottom = 23.0
 text = "GAME OVER"
+
+[node name="EndScore" type="Label" parent="."]
+offset_left = 1.0
+offset_top = 22.0
+offset_right = 52.0
+offset_bottom = 48.0
+script = ExtResource("1_etnk1")

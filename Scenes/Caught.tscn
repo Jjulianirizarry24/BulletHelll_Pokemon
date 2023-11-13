@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dkedorsgr7f4b" path="res://ShakeRightPokeball.png" id="3_lnbtc"]
 [ext_resource type="FontFile" uid="uid://comd0a6f36umo" path="res://PKMN RBYGSC.ttf" id="5_tfuqg"]
 [ext_resource type="Script" path="res://Scripts/Click.gd" id="6_24ibv"]
-[ext_resource type="Script" path="res://Scripts/gameOverText.gd" id="7_2k5uo"]
+[ext_resource type="Script" path="res://Scripts/currTime.gd" id="7_r4iaf"]
 [ext_resource type="AudioStream" uid="uid://41d2p8q0pady" path="res://Pokémon Black & White - Critical Health Music (HQ).mp3" id="8_k8n7a"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_b5pnx"]
@@ -87,7 +87,7 @@ offset_right = 120.0
 offset_bottom = 21.0
 scale = Vector2(5.07521, 11.8672)
 theme_override_fonts/font = ExtResource("5_tfuqg")
-text = "Counter:
+text = "Click to Escape:
 "
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -102,16 +102,19 @@ offset_right = 123.613
 offset_bottom = 147.094
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 5.0
 
-[node name="gameOverText" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
-script = ExtResource("7_2k5uo")
+[node name="currTime" type="Label" parent="."]
+offset_left = -186.779
+offset_top = 83.8389
+offset_right = -146.779
+offset_bottom = 106.839
+script = ExtResource("7_r4iaf")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_k8n7a")
 volume_db = -6.667
+
+[node name="currTimer" type="Timer" parent="."]
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

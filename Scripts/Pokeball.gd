@@ -54,6 +54,8 @@ func _process(delta):
 
 		
 func _on_screen_exited():
+	Global.currScore += 1
+	print("HEY I WORK")
 	queue_free()
 
 #Unsure if i wanna use this yet
@@ -64,3 +66,9 @@ func _on_hbox_body_entered(body):
 
 
 	
+
+
+func _on_visible_on_screen_notifier_2d_screen_exited():
+	Global.currScore += 1
+	print("HEY I WORK")
+	queue_free()

@@ -27,7 +27,6 @@ scale = Vector2(0.002, 0.002)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_nc3f3")
-volume_db = -21.293
 
 [node name="WALL" parent="." instance=ExtResource("9_8g5ap")]
 position = Vector2(-63, 397)
