@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends RigidBody2D
 
 #var where we store
 @export var pokeball_scene = load("res://Scenes/Pokeball.tscn")
@@ -11,8 +11,8 @@ extends CharacterBody2D
 #@onready var pathfollow = get_parent()
 #@export var path : String = "linear"
 
-var speed = 0.5
-var vel = Vector2(randf(), randf()).normalized() * speed
+@export var speed = 3
+var vel:Vector2 = Vector2(speed, speed)
 
 
 #velocity.x = speed * direction.x
@@ -26,6 +26,9 @@ var step = 0
 var spawnPoint = Node2D.new()
 var pos = 0
 var screen_size = get_viewport_rect().size
+
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	step = 2 * PI / spawnpoint_count
@@ -62,54 +65,31 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
+
 func _process(delta):
+
 	var new_rotate = rotate.rotation_degrees + rotate_speed * delta
 	rotate.rotation_degrees = fmod(new_rotate, 360)
 	
 	var random_direction = Vector2(randf_range(0, 360), randf_range(0, 360)).normalized()
-	vel = random_direction * speed
+	#vel = random_direction * speed
+	#move_and_collide(vel)
+	if Global.isHit == true:
+		var nodes_in_group = get_tree().get_nodes_in_group("Pokeball")
+		for node in nodes_in_group:
+			node.queue_free()
+		#get_tree().call_group("Pokeball", "queue_free()")
+		#for child in get_node("Pokeball").get_children():
+			#if (child.has_method("_on_VisibilityNotifier2D_screen_exited")):
+				#child.queue_free()
 
-
-	for instance in get_slide_collision_count():
-		var c = get_slide_collision(instance)
-		if c.get("number") == 0:
-			vel.x = -vel.x
-		elif c.get("number") == 1:
-			vel.y = -vel.y
-
-	move_and_collide(vel)
-			
-	#Set random path or something
 	
-	#if self.position.x != 200 and self.position.x  != 1400:
-	#	if updownDir:
-	#		self.position.x -= 10
-	#		updownDir = !updownDir 
-	#	else:
-	#		self.position.x += 10
-	#		updownDir = !updownDir 
+
 		
-	#if self.position.y >= 100 and self.position.y  <= 700:
-	#	if leftrightDir:
-	#		self.position.y -= 10
-	#		leftrightDir = !leftrightDir 
-	#	else:
-	#		self.position.y += 10
-	#		leftrightDir = !leftrightDir 
 	
 	
-	#pathfollow.h_offset += 100 * delta
-	#rotator.rotate(0.05)
-	#rotate(0.05)
-	#var pball = pokeball_scene.instantiate()
-	
-	#get_parent().add_child(pball)
-	
-	
+			
 
-
-#func _on_TimeToShoot_timeout() -> void:
-#	for s in rotate.get_children():
 		
 func _on_TimeToShoot_timeout():
 	for b in rotate.get_children():
@@ -167,4 +147,23 @@ func _on_TimePatternChange_timeout():
 
 	
 	
+		
+
+
+func _on_area_2d_body_entered(body):
+	pass
+		
+
+
+func _on_body_entered(body):
+	pass
+	#if body.is_in_group("wall"):
+		#body.bounce()
+	#	 set_collision_restitution(10)
+		#vel = vel.bounce(collision.collisi 
+		#var collision:KinematicCollision2D = get_last_slide_collision()
+
+
+
+		
 		

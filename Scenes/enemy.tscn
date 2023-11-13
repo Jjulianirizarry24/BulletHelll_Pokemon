@@ -1,10 +1,31 @@
-[gd_scene load_steps=3 format=3 uid="uid://cbq8grdrmull0"]
+[gd_scene load_steps=5 format=3 uid="uid://cbq8grdrmull0"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_tnnv8"]
 [ext_resource type="Texture2D" uid="uid://b3jl1hqmq053u" path="res://red_enemy.png" id="1_twjrv"]
 
-[node name="enemy" type="CharacterBody2D"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qtvnh"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6ikid"]
+radius = 9.0
+height = 56.0
+
+[node name="enemy" type="RigidBody2D"]
+mass = 0.01
+physics_material_override = SubResource("PhysicsMaterial_qtvnh")
+gravity_scale = 0.0
+custom_integrator = true
+can_sleep = false
+lock_rotation = true
+linear_velocity = Vector2(100, 100)
+linear_damp_mode = 1
+angular_velocity = 0.0349066
+angular_damp_mode = 1
 script = ExtResource("1_tnnv8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_6ikid")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.0616733, 0.0555477)
@@ -19,5 +40,6 @@ wait_time = 5.0
 [node name="TimePatternChange" type="Timer" parent="."]
 wait_time = 5.0
 
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="TimeToShoot" to="." method="_on_TimeToShoot_timeout"]
 [connection signal="timeout" from="TimePatternChange" to="." method="_on_TimePatternChange_timeout"]

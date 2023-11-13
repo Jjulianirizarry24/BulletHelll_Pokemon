@@ -28,20 +28,20 @@ scale = Vector2(0.002, 0.002)
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_nc3f3")
 
-[node name="WALL" parent="." instance=ExtResource("9_8g5ap")]
+[node name="WALL" parent="." groups=["wall"] instance=ExtResource("9_8g5ap")]
 position = Vector2(-63, 397)
 scale = Vector2(1, 20)
 
-[node name="WALL2" parent="." instance=ExtResource("9_8g5ap")]
+[node name="WALL2" parent="." groups=["wall"] instance=ExtResource("9_8g5ap")]
 position = Vector2(1600, 501)
 scale = Vector2(1, 20)
 
-[node name="WALL3" parent="." instance=ExtResource("9_8g5ap")]
+[node name="WALL3" parent="." groups=["wall"] instance=ExtResource("9_8g5ap")]
 position = Vector2(763, -66)
 scale = Vector2(20, 1)
 number = 1
 
-[node name="WALL4" parent="." instance=ExtResource("9_8g5ap")]
+[node name="WALL4" parent="." groups=["wall"] instance=ExtResource("9_8g5ap")]
 position = Vector2(755, 891)
 scale = Vector2(20, 1)
 number = 1
